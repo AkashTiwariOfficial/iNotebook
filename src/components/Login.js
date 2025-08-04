@@ -1,0 +1,106 @@
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import noteContext from "../Context/notes/noteContext";
+
+export default function Login(props) {
+  const Context = useContext(noteContext);
+  const { showAlert } = Context;
+
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  let navigate = useNavigate();
+
+  const { setProgress } = props;
+
+  const host = process.env.REACT_APP_API_URL;
+
+  const handlerSubmit = async (event) => {
+    event.preventDefault();
+
+    const response = await fetch(`${host}/api/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: credentials.email,
+        password: credentials.password,
+      }),
+    });
+    setProgress(12);
+    const json = await response.json();
+    setProgress(40);
+    if (json.success) {
+      setProgress(70);
+      showAlert("You have LoggedIn in inoteBook successfully", "success");
+      localStorage.setItem("token", json.authenticationToken);
+      navigate("/");
+      setProgress(100);
+    } else {
+      setProgress(70);
+      showAlert(
+        "Invalid Credentials [Invaild email or password]. Please Login again!",
+        "danger"
+      );
+      setProgress(100);
+    }
+  };
+
+  const changeHandler = (event) => {
+    setCredentials({ ...credentials, [event.target.name]: event.target.value });
+  };
+
+  return (
+    <div
+      className="container"
+      style={{ marginTop: "17vh", marginBottom: "25vh" }}
+    >
+      <h2 className="my-4">Login to use iNotebook</h2>
+      <form onSubmit={handlerSubmit}>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Email address
+          </label>
+          <input
+            type="email"
+            className="form-control"
+            id="email"
+            value={credentials.email}
+            name="email"
+            aria-describedby="emailHelp"
+            autoComplete="username"
+            onChange={changeHandler}
+          />
+          <div id="email" className="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            value={credentials.password}
+            name="password"
+            onChange={changeHandler}
+            autoComplete="current-password"
+          />
+        </div>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={
+            credentials.email === 0 ||
+            credentials.email > 8 ||
+            credentials.password === 0 ||
+            credentials.password > 8
+          }
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  );
+}

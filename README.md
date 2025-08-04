@@ -1,70 +1,105 @@
-# Getting Started with Create React App
+# 📒 iNotebook – Cloud-Based Notes App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**iNotebook** is a secure, full-stack note-taking web application built with **React.js** and **Express.js**. It allows users to create, edit, and manage personal notes stored safely on the cloud with authentication support.  
+✨ Just **double-click** on any note’s **title**, **tag**, or **description** to edit it instantly!
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🔗 Live Demo
 
-### `npm start`
+🌐 Hosted at: [https://inotebook-yourname.netlify.app](https://inotebook-yourname.netlify.app)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> Note: Make sure your backend is also deployed (e.g., Render or Railway) and the frontend `.env` points to it.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 🔐 **User Authentication** (Login/Signup with JWT)
+- 📓 **Create, Read, Update, Delete Notes**
+- 🖱️ **Double-tap to Edit Notes**
+- ☁️ **Cloud-based Storage (MongoDB)**
+- 📱 **Responsive Design** for all devices
+- ⚡ **Instant UI Updates** with React Context
+- 🗂️ **Tag-based Organization**
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ✨ Double-Tap Editing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To edit a note, just double-click on:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 📝 **Title**
+- 🏷️ **Tag**
+- 📋 **Description**
 
-### `npm run eject`
+It instantly becomes editable — a smooth inline editing experience!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🖼️ Screenshots
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Make sure you have these inside a `/screenshots` folder.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 🏠 Dashboard  
+![Dashboard](./screenshots/dashboard.png)
 
-## Learn More
+### 🔐 Login / Signup  
+![Auth Page](./screenshots/auth.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🧱 Tech Stack
 
-### Code Splitting
+| Frontend           | Backend                | Database |
+|--------------------|------------------------|----------|
+| React, Bootstrap   | Node.js, Express, JWT  | MongoDB  |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 📁 Folder Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+project-root/
+├── backend/ # Express backend
+│ ├── index.js
+│ └── ...
+├── src/ # React frontend (inside root)
+├── public/
+├── .env # backend env file
+├── .env.local # Frontend env file
+└── ...
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔑 Environment Setup
 
-### Deployment
+### 🔐 Frontend `.env.local` (in root)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 🔐 Backend `.env`  
 
-### `npm run build` fails to minify
+```env.local
+REACT_APP_API_BASE_URL=https://your-backend.onrender.com
+PORT=****
+REACT_APP_EMAILJS_SERVICE_ID=your_service_id
+REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
+REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To use auto email functionality securely (e.g., using EmailJS or a similar service) and store sensitive values like service_id, template_id, and public_key.
+
+.env
+MONGO_DB_URI=your_mongo_connection_string
+JWL_SUPER_SECRECT=your_secret_key
+PORT=****
+
+
+```
+
+---
+
+🌍 Hosting
+Frontend: Netlify,
+
+Backend: Render
