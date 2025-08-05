@@ -97,7 +97,7 @@ export default function NotesItems(props) {
               </span>
             </p>
             <p className="card-text">
-              <h5>Description : </h5>{" "}
+              <span className="fw-bold" >Description : </span>{" "}
               <span
                 id="Notes-item"
                 onDoubleClick={handleDoubleClick}
