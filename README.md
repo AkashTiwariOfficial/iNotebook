@@ -7,7 +7,7 @@
 
 ## 🔗 Live Demo
 
-🌐 Hosted at: [https://inotebook-yourname.netlify.app](https://inoteb0ok.netlify.app/)
+🌐 Hosted at: [https://inotebook-akashtiwari.netlify.app](https://inoteb0ok.netlify.app/)
 
 > Note: Make sure your backend is also deployed (e.g., Render or Railway) and the frontend `.env` points to it.
 
