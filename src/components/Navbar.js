@@ -113,15 +113,16 @@ export default function Navbar(props) {
               </Link>
             </li>
           </ul>
-          <div style={{ display: "inline-block", position: "relative" }}>
+          <div  className="d-flex align-items-center mx-5"style={{ display: "inline-block", position: "relative" }}>
             <button
-              className={`p-2 rounded-full shadow bg-${mode} dark:bg-zinc-800 transition-all duration-300 hover:rotate-180 mx-4`}
+              className={`p-2 rounded-full shadow bg-${mode} dark:bg-zinc-800 transition-all duration-300 hover:rotate-180`}
               onClick={toggleMode}
               style={changeBorder()}
               onMouseEnter={show}
               onMouseLeave={hide}
               onTouchStart={show}
               onTouchEnd={hide}
+              onTouchCancel={hide}
             >
               {" "}
               {mode === "dark" ? (
@@ -145,7 +146,7 @@ export default function Navbar(props) {
           </div>
 
           {!localStorage.getItem("token") ? (
-            <form className="d-flex">
+           <div className="d-flex auth-buttons">
               <Link
                 className="btn btn-primary mx-1"
                 to="/login"
@@ -162,11 +163,12 @@ export default function Navbar(props) {
               >
                 SignUp
               </Link>
-            </form>
+          </div>
           ) : (
+            <div className="d-flex auth-buttons">
             <button className="btn btn-primary mx-4" onClick={handleLogout}>
               Logout
-            </button>
+            </button></div>
           )}
         </div>
       </div>

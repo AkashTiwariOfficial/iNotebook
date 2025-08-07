@@ -9,7 +9,7 @@ export default function Usernotes(props) {
   const { setProgress } = props;
 
   return (
-    <div style={{ marginTop: "17vh", marginBottom: "25vh" }}>
+    <div style={{ marginTop: "17dvh", marginBottom: "25dvh" }}>
       <div className={`bg-${mode} p-4 rounded shadow-sm w-100`}>
         <Notes setProgress={setProgress} />
       </div>

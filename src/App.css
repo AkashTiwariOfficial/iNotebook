@@ -93,8 +93,8 @@ body.dark #editnotes {
 .div1 {
   margin: 0px;
   padding: 0px;
-  height: 30vh;
-  width: 25vw;
+  height: 35dvh;
+  width: 30dvw;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -106,7 +106,7 @@ body.dark #editnotes {
 }
 
 .header {
-  font-size: 5rem;
+  font-size: 3rem;
   color: #059dc0;
 }
 
@@ -120,24 +120,25 @@ body.dark #editnotes {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5vh;
-  margin-top: 5vh;
-  margin-bottom: 10vh;
+  padding: 5dvh;
+  margin-top: 5dvh;
+  margin-bottom: 10dvh;
 }
 
 .div2 {
-  height: 25vh;
-  width: 25vw;
-  font-size: 20px;
-  padding-top: 5px;
+  height: 30dvh;
+  width: 25dvw;
+  padding-top: 10px;
+  font-size: 15px;
+  overflow: hidden;
 }
 
 .div-right {
-  margin-left: 15vw;
+  margin-left: 12dvw;
 }
 
 .div-left {
-  margin-right: 15vw;
+  margin-right: 10dvw;
   padding-top: 20px;
 }
 
@@ -159,3 +160,87 @@ body.dark .card-body {
   cursor: pointer;
   caret-color: #059dc0;
 }
+
+.heading {
+  max-width: 70dvw;
+  line-height: 1.5 ;
+}
+
+@media (max-width: 768px) {
+  
+  .div-left {
+  margin-right: 2rem;
+  padding-top: 15px;
+}
+
+.div-right {
+  margin-left: 2rem;
+}
+
+.div2 {
+  width: 7rem;
+  font-size: 9px;
+  padding-top: 10px;
+  overflow: visible;
+}
+
+.main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1dvh;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.header {
+  font-size: 2rem;
+  color: #059dc0;
+}
+
+.heading {
+  max-width: 90dvw;
+  line-height: 1;
+  font-size: 0.7rem;
+}
+
+.div1 {
+  margin: 0px;
+  padding: 0px;
+  height: 5rem;
+  width: 8rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 2%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-paragrapgh {
+  padding-top: 1.2rem;
+ height: 1.5rem;
+ font-size: 7px;
+}
+
+}
+
+@media (max-width: 768px) {
+  .auth-buttons {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+
+  .auth-buttons .btn {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  .auth-buttons.d-flex {
+    display: flex 
+  }
+}
+

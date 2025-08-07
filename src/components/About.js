@@ -19,7 +19,7 @@ export default function About(props) {
     <div>
       <div
         className="container py-5"
-        style={{ marginTop: "17vh", marginBottom: "10vh" }}
+        style={{ marginTop: "17dvh", marginBottom: "10dvh" }}
       >
         <div className="text-center mb-5">
           <h1 className="fw-bold text-primary">About iNotebook</h1>

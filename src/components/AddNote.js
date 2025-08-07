@@ -24,7 +24,7 @@ export default function AddNote(props) {
 
   return (
     <div>
-      <div className="container" style={{ marginTop: "17vh" }}>
+      <div className="container" style={{ marginTop: "17dvh" }}>
         <h1>Add Notes</h1>
         <form className="my-3">
           <div className="mb-3">

@@ -7,7 +7,7 @@
 
 ## 🔗 Live Demo
 
-🌐 Hosted at: [https://inotebook-yourname.netlify.app](https://inotebook-yourname.netlify.app)
+🌐 Hosted at: [https://inotebook-yourname.netlify.app](https://inoteb0ok.netlify.app/)
 
 > Note: Make sure your backend is also deployed (e.g., Render or Railway) and the frontend `.env` points to it.
 
@@ -22,7 +22,7 @@
 - 📱 **Responsive Design** for all devices
 - ⚡ **Instant UI Updates** with React Context
 - 🗂️ **Tag-based Organization**
-
+- 📬 Automatically receive an email upon sending a feedback to us
 ---
 
 ## ✨ Double-Tap Editing
@@ -51,9 +51,14 @@ It instantly becomes editable — a smooth inline editing experience!
 
 ## 🧱 Tech Stack
 
-| Frontend           | Backend                | Database |
-|--------------------|------------------------|----------|
-| React, Bootstrap   | Node.js, Express, JWT  | MongoDB  |
+| Area       | Technology         |
+|------------|--------------------|
+| Frontend   | React, Bootstrap   |
+| Backend    | Node.js, Express   |
+| Database   | MongoDB Atlas      |
+| Auth       | JWT (JSON Web Token) |
+| Mailing    | Nodemailer         |
+| Hosting    | Render (backend), Netlify (frontend)
 
 ---
 
@@ -100,6 +105,33 @@ PORT=****
 ---
 
 🌍 Hosting
+
 Frontend: Netlify,
 
 Backend: Render
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/yourusername/iNotebook.git
+cd iNotebook
+
+2. Setup Backend
+   cd backend
+   npm install
+
+3. Setup Backend and Frontend 
+   To run both 
+   npm run both
+
+```
+
+### 👨‍💻 Author
+
+- Akash Tiwari
+- 📧 akashtiwari00624@gmail.com
+- 🔗 GitHub: AkashTiwariOfficial

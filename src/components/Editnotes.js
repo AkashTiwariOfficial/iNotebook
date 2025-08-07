@@ -49,7 +49,7 @@ export default function Editnotes(props) {
   };
 
   return (
-    <div style={{ marginTop: "17vh", marginBottom: "25vh" }}>
+    <div style={{ marginTop: "17dvh", marginBottom: "25dvh" }}>
       <h1 className="my-4 py-3">Edit Notes</h1>
 
       <form className="my-3">

@@ -51,7 +51,7 @@ export default function Contactus(props) {
   };
 
   return (
-    <div style={{ marginTop: "17vh", marginBottom: "10vh" }}>
+    <div style={{ marginTop: "17dvh", marginBottom: "10dvh" }}>
       <div className="container py-5">
         <div className="text-center mb-5">
           <h2 className="fw-bold text-primary">About iNotebook</h2>

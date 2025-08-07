@@ -5,7 +5,11 @@ export default function Alert() {
   const Context = useContext(noteContext);
   const { alert } = Context;
 
+
   const capatilize = (word) => {
+    if (!word) {
+      return "";
+    }
     if (word === "danger" || word === "warning") {
       word = "Error";
     }
@@ -13,7 +17,10 @@ export default function Alert() {
     return lower.charAt(0).toUpperCase() + lower.slice(1);
   };
 
+
+
   return (
+
     <div
       style={{
         position: "fixed",
@@ -40,5 +47,6 @@ export default function Alert() {
         </div>
       )}
     </div>
+
   );
 }

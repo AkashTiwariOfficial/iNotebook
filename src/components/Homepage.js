@@ -12,6 +12,8 @@ export default function Homepage(props) {
 
   const { setProgress } = props;
 
+  const isMobile = window.innerWidth <= 768;
+
   const handleClick = () => {
     setProgress(12);
     setProgress(50);
@@ -24,28 +26,28 @@ export default function Homepage(props) {
     <div>
       <div
         className={`bg-${mode} min-h-screen w-screen py-10 px-4`}
-        style={{ marginTop: "17vh", marginBottom: "25vh" }}
+        style={{ marginTop: "17dvh", marginBottom: "25dvh" }}
       >
         <div className="text-center mb-10">
           <div className="container " id="title">
             <h1 className="header py-3 mt-5 pt-4">Welcome to iNotebook</h1>
           </div>
           <div className="d-flex justify-content-center">
-            <h4
-              className="fw-semibold text-start my-3"
-              style={{ maxWidth: "30vw", lineHeight: "1.5" }}
+            <h6
+              className="fw-semibold text-start my-3 heading"
             >
               Jot down ideas, track your tasks, and manage everything important
               — all in one place, anytime, anywhere.
-            </h4>
+            </h6>
           </div>
+          <div className="main-cont">
           <div className="container main-div">
             <div
               className="container div1"
-              style={{ backgroundImage: `url(${div1})`, marginRight: "15vw" }}
+              style={{ backgroundImage: `url(${div1})`, marginRight: isMobile ? "1rem" : "15dvw" }}
             ></div>
             <div className="container div2">
-              <p>
+              <p className="home-paragrapgh">
                 <i>
                   iNotebook is a modern, secure, and user-friendly note-taking
                   app designed to simplify your digital life. Whether you're
@@ -58,7 +60,7 @@ export default function Homepage(props) {
           </div>
           <div className="container main-div">
             <div className="container div2 div-left">
-              <p>
+              <p className="home-paragrapgh">
                 <i>
                   iNotebook is designed to be simple and intuitive, so you can
                   start writing notes instantly. With a clean interface and
@@ -74,10 +76,10 @@ export default function Homepage(props) {
           <div className="container main-div">
             <div
               className="container div1"
-              style={{ backgroundImage: `url(${div3})`, marginRight: "15vw" }}
+              style={{ backgroundImage: `url(${div3})`, marginRight: isMobile ? "1rem" : "15dvw" }}
             ></div>
             <div className="container div2">
-              <p>
+              <p className="home-paragrapgh" >
                 <i>
                   At iNotebook, your privacy is our top priority. We understand
                   the importance of protecting your personal data and notes.Your
@@ -86,6 +88,7 @@ export default function Homepage(props) {
                 </i>
               </p>
             </div>
+          </div>
           </div>
 
           {localStorage.getItem("token") ? (
@@ -127,7 +130,7 @@ export default function Homepage(props) {
               </p>
             </div>
           )}
-          <div className="container" style={{ paddingBottom: "10vh" }}></div>
+          <div className="container" style={{ paddingBottom: "10dvh" }}></div>
         </div>
       </div>
     </div>
