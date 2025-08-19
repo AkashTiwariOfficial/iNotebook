@@ -4,7 +4,6 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NoteState from "./Context/notes/NoteState";
-import Alert from "./components/Alert";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Contactus from "./components/Contactus";
@@ -15,9 +14,13 @@ import Editnotes from "./components/Editnotes";
 import Usernotes from "./components/Usernotes";
 import LoadingBar from "react-top-loading-bar";
 import React, { useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
+
   const [progress, setProgress] = useState(0);
+
+  const notify = () => toast('Here is your toast');
 
   return (
     <>
@@ -30,7 +33,6 @@ function App() {
             progress={progress}
             onLoaderFinished={() => setProgress(0)}
           />
-          <Alert />
           <div className="container my-3">
             <Routes>
               <Route path="/" element={<Home setProgress={setProgress} />} />
@@ -69,6 +71,24 @@ function App() {
             </Routes>
           </div>
           <Footer setProgress={setProgress} />
+          <div>
+            <button onClick={notify} className="d-none">Make me a toast</button>
+            <Toaster
+              toastOptions={{
+                style: {
+                  background: '#1f2937',
+                  color: '#fff',
+                  duration: '2500',
+                },
+                dark: {
+                  style: {
+                    background: "#1f2937", 
+                    color: "#fff",
+                  },
+                },
+              }}
+            />
+          </div>
         </Router>
       </NoteState>
     </>

@@ -1,10 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import noteContext from "../Context/notes/noteContext";
+import toast from "react-hot-toast";
 
 export default function Signup(props) {
-  const Context = useContext(noteContext);
-  const { showAlert } = Context;
 
   const { setProgress } = props;
 
@@ -36,10 +34,7 @@ export default function Signup(props) {
       setProgress(12);
       const json = await response.json();
       if (json.success) {
-        showAlert(
-          "You have created an account in inoteBook successfully",
-          "success"
-        );
+       toast.success("You have created an account in inoteBook successfully")
         setProgress(40);
         localStorage.setItem("token", json.authenticationToken);
         setProgress(60);
@@ -48,16 +43,13 @@ export default function Signup(props) {
       } else {
         setProgress(40);
         setProgress(60);
-        showAlert(
-          "User with email already exists. Please Signup again!",
-          "warning"
-        );
+        toast.error("User with email already exists. Please Signup again!")
         setProgress(100);
       }
     } else {
       setProgress(40);
       setProgress(60);
-      showAlert("Both password did not match. Please try again!", "warning");
+      toast.error("Both password did not match. Please try again!");
       setProgress(100);
     }
   };

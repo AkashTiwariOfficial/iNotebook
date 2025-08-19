@@ -1,10 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import noteContext from "../Context/notes/noteContext";
+import toast from "react-hot-toast";
+import Spinner from "./Spinner";
 
 export default function Login(props) {
-  const Context = useContext(noteContext);
-  const { showAlert } = Context;
 
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   let navigate = useNavigate();
@@ -31,15 +30,15 @@ export default function Login(props) {
     setProgress(40);
     if (json.success) {
       setProgress(70);
-      showAlert("You have LoggedIn in inoteBook successfully", "success");
+      toast.success("LoggedIn in inoteBook successfully");
       localStorage.setItem("token", json.authenticationToken);
+      <Spinner />
       navigate("/");
       setProgress(100);
     } else {
       setProgress(70);
-      showAlert(
-        "Invalid Credentials [Invaild email or password]. Please Login again!",
-        "danger"
+      toast.error(
+        "Invalid Credentials. Please Login again!"
       );
       setProgress(100);
     }

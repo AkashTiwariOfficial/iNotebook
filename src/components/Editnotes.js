@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from "react";
 import noteContext from "../Context/notes/noteContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function Editnotes(props) {
   const Context = useContext(noteContext);
-  const { note, setNote, updateNote, showAlert } = Context;
+  const { note, setNote, updateNote } = Context;
 
   const { setProgress } = props;
 
@@ -32,7 +33,7 @@ export default function Editnotes(props) {
     await updateNote(note.id, note.eTitle, note.eDescription, note.etag);
     setProgress(40);
     setNote({ eTitle: "", eDescription: "", etag: "" });
-    showAlert("Notes has been updated", "success");
+    toast.success("Notes has been updated");
     setProgress(70);
     setTimeout(() => {
       navigate("/notes");

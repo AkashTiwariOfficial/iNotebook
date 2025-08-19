@@ -1,10 +1,11 @@
 import React, { useContext, useRef } from "react";
 import noteContext from "../Context/notes/noteContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function NotesItems(props) {
   const Context = useContext(noteContext);
-  const { deleteNote, showAlert, handleEditnote } = Context;
+  const { deleteNote, handleEditnote } = Context;
 
   const { note, editnote, setProgress } = props;
 
@@ -16,7 +17,7 @@ export default function NotesItems(props) {
   const clickHandler = () => {
     setProgress(12);
     setProgress(40);
-    showAlert("Notes has been Deleted", "success");
+    toast.success("Notes has been Deleted", "success");
     setProgress(70);
     setProgress(100);
     return deleteNote(note._id);

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import NoteContext from "./noteContext";
+import toast from "react-hot-toast";
 
 const NoteState = (props) => {
   const initialNotes = [];
@@ -100,25 +101,15 @@ const NoteState = (props) => {
     setNotes(newNotes);
   };
 
-  const showAlert = (message, type) => {
-    setAlert({
-      message: message,
-      type: type,
-    });
-    setTimeout(() => {
-      setAlert(null);
-    }, 1000);
-  };
-
   const toggleMode = () => {
     if (mode === "light") {
       setMode("dark");
-      showAlert("Dark Mode has been enabled", "success");
+      toast("Dark Mode has been enabled");
       document.body.style.backgroundColor = "#151B25";
       document.body.style.color = "#b4b4b4";
     } else {
       setMode("light");
-      showAlert("Light Mode has been enabled", "success");
+      toast("Light Mode has been enabled");
       document.body.style.backgroundColor = " rgb(255, 255, 255)";
       document.body.style.color = "#0a0a0a";
     }
@@ -194,7 +185,6 @@ const NoteState = (props) => {
         updateNote,
         getNotes,
         handleEditnote,
-        showAlert,
         toggleMode,
         changeBorder,
         show,

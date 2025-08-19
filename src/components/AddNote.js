@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import noteContext from "../Context/notes/noteContext";
+import toast from "react-hot-toast";
 
 export default function AddNote(props) {
   const Context = useContext(noteContext);
-  const { addNote, showAlert } = Context;
+  const { addNote } = Context;
   const { setProgress } = props;
 
   const [note, setNote] = useState({ Title: "", Description: "", tag: "" });
@@ -14,7 +15,7 @@ export default function AddNote(props) {
     addNote(note.Title, note.Description, note.tag);
     setNote({ Title: "", Description: "", tag: "" });
     setProgress(80);
-    showAlert("Notes have been added to your Account", "success");
+    toast.success("Notes have been added to your Account");
     setProgress(100);
   };
 

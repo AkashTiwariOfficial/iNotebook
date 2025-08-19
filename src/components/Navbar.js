@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import noteContext from "../Context/notes/noteContext";
 import { Sun, Moon } from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function Navbar(props) {
   let navigate = useNavigate();
@@ -12,7 +13,6 @@ export default function Navbar(props) {
   const Context = useContext(noteContext);
   const {
     mode,
-    showAlert,
     toggleMode,
     changeBorder,
     show,
@@ -25,7 +25,7 @@ export default function Navbar(props) {
     setProgress(12);
     setProgress(40);
     localStorage.removeItem("token");
-    showAlert("You have Logged out from inoteBook successfully", "success");
+    toast.success("You have Logged out from inoteBook successfully");
     navigate("login");
     setProgress(100);
   };

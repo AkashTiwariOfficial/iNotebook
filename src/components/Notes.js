@@ -3,6 +3,7 @@ import noteContext from "../Context/notes/noteContext";
 import AddNote from "./AddNote";
 import NotesItems from "./NotesItems";
 import { useContext, useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 
 export default function Notes(props) {
   const ref = useRef(null);
@@ -10,7 +11,7 @@ export default function Notes(props) {
   const Context = useContext(noteContext);
   const location = useLocation();
 
-  const { notes, getNotes, updateNote, showAlert } = Context;
+  const { notes, getNotes, updateNote } = Context;
   const { setProgress } = props;
 
   const [note, setNote] = useState({
@@ -39,7 +40,7 @@ export default function Notes(props) {
       ref.current.click();
     }, 100);
     setNote({ eTitle: "", eDescription: "", etag: "" });
-    showAlert("Notes has been updated", "success");
+    toast.success("Notes has been updated");
     setProgress(100);
   };
 
