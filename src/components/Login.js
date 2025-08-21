@@ -6,6 +6,7 @@ import Spinner from "./Spinner";
 export default function Login(props) {
 
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+   const [showSpinner, setSpinner] = useState(false);
   let navigate = useNavigate();
 
   const { setProgress } = props;
@@ -14,7 +15,9 @@ export default function Login(props) {
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
+    setSpinner(true);
 
+    try{
     const response = await fetch(`${host}/api/auth/login`, {
       method: "POST",
       headers: {
@@ -29,26 +32,33 @@ export default function Login(props) {
     const json = await response.json();
     setProgress(40);
     if (json.success) {
-      setProgress(70);
       toast.success("LoggedIn in inoteBook successfully");
       localStorage.setItem("token", json.authenticationToken);
-      <Spinner />
+      setProgress(70);
       navigate("/");
-      setProgress(100);
     } else {
       setProgress(70);
       toast.error(
         "Invalid Credentials. Please Login again!"
       );
-      setProgress(100);
     }
-  };
+   } catch (error) {
+    toast.error("Internal Server Error");
+  } finally {
+         setSpinner(false);
+         setProgress(100);
+  }
+};
 
   const changeHandler = (event) => {
     setCredentials({ ...credentials, [event.target.name]: event.target.value });
   };
 
   return (
+    <>
+        {showSpinner ? (
+          <Spinner /> )
+          : (
     <div
       className="container"
       style={{ marginTop: "17dvh", marginBottom: "25dvh" }}
@@ -91,15 +101,15 @@ export default function Login(props) {
           type="submit"
           className="btn btn-primary"
           disabled={
-            credentials.email === 0 ||
-            credentials.email > 8 ||
-            credentials.password === 0 ||
-            credentials.password > 8
+            credentials.email.length === 0 ||
+            credentials.password.length === 0 
           }
         >
           Login
         </button>
       </form>
     </div>
+          )}
+        </>
   );
 }

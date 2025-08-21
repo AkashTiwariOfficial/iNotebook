@@ -8,9 +8,8 @@ import toast from "react-hot-toast";
 export default function Notes(props) {
   const ref = useRef(null);
   const refClose = useRef(null);
+   const location = useLocation();
   const Context = useContext(noteContext);
-  const location = useLocation();
-
   const { notes, getNotes, updateNote } = Context;
   const { setProgress } = props;
 

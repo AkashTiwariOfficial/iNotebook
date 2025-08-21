@@ -1,7 +1,8 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import noteContext from "../Context/notes/noteContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import Spinner from "./Spinner";
 
 export default function NotesItems(props) {
   const Context = useContext(noteContext);
@@ -13,6 +14,8 @@ export default function NotesItems(props) {
   const location = useLocation();
 
   const last_tap = useRef(0);
+  
+    const [showSpinner, setSpinner] = useState(false);
 
   const clickHandler = () => {
     setProgress(12);
@@ -28,24 +31,30 @@ export default function NotesItems(props) {
     const DOUBLE_PRESS_DELAY = 300;
 
     if (last_tap.current && now - last_tap.current < DOUBLE_PRESS_DELAY) {
+    
       handleEditnote(note);
       navigate("/editnotes");
+      
     }
     last_tap.current = now;
   };
 
   const handleDoubleClick = () => {
     setProgress(12);
+    setSpinner(true);
     handleEditnote(note);
     setProgress(40);
     setTimeout(() => {
       navigate("/editnotes");
       window.scrollTo({ top: "0", behavior: "smooth" });
       setProgress(100);
-    }, 800);
+      setSpinner(false);
+    }, 3000);
   };
 
   return (
+    <>
+        {showSpinner && <Spinner />}
     <div
       className={`col-${location.pathname === "/usernotes" ? "12" : "md-4"}`}
     >
@@ -115,5 +124,6 @@ export default function NotesItems(props) {
         </div>
       </div>
     </div>
+      </>
   );
 }

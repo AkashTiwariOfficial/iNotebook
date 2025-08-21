@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import noteContext from "../Context/notes/noteContext";
 import toast from "react-hot-toast";
+import Spinner from "./Spinner";
 
 export default function AddNote(props) {
   const Context = useContext(noteContext);
@@ -8,6 +9,14 @@ export default function AddNote(props) {
   const { setProgress } = props;
 
   const [note, setNote] = useState({ Title: "", Description: "", tag: "" });
+     const [showSpinner, setSpinner] = useState(false);
+
+  useEffect(() => {
+    setSpinner(true);
+    setTimeout(() => {
+       setSpinner(false);
+    }, 2000);
+  }, [])
 
   const clickHandler = (event) => {
     event.preventDefault();
@@ -24,6 +33,9 @@ export default function AddNote(props) {
   };
 
   return (
+    <>
+    {showSpinner ? ( <Spinner /> ) :
+    (
     <div>
       <div className="container" style={{ marginTop: "17dvh" }}>
         <h1>Add Notes</h1>
@@ -88,10 +100,10 @@ export default function AddNote(props) {
             type="submit"
             className="btn btn-primary"
             disabled={
-              note.Title === 0 ||
-              note.Description === 0 ||
-              note.Title < 3 ||
-              note.Description < 8
+              note.Title.length === 0 ||
+              note.Description.length === 0 ||
+              note.Title.length < 3 ||
+              note.Description.length < 8
             }
             onClick={clickHandler}
           >
@@ -100,5 +112,7 @@ export default function AddNote(props) {
         </form>
       </div>
     </div>
+    )}
+    </>
   );
 }

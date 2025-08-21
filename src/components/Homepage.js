@@ -1,28 +1,38 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import div1 from "./divimg.avif";
 import div2 from "./easy.jpg";
 import div3 from "./privacy.avif";
 import noteContext from "../Context/notes/noteContext";
+import Spinner from "./Spinner";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Homepage(props) {
 
   const Context = useContext(noteContext);
   const { mode } = Context;
+  const navigate = useNavigate();
 
   const { setProgress } = props;
+  const [showSpinner, setSpinner] = useState(false);
 
   const isMobile = window.innerWidth <= 768;
 
-  const handleClick = () => {
+  const handleClick = (path) => {
+    setSpinner(true);
     setProgress(12);
     setProgress(50);
     setTimeout(() => {
+      navigate(path);
       setProgress(100);
-    }, 100);
+      setSpinner(false);
+       window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 1000);
   };
 
   return (
+    <>
+    {showSpinner && <Spinner />}
     <div>
       <div
         className={`bg-${mode} min-h-screen w-screen py-10 px-4`}
@@ -41,54 +51,54 @@ export default function Homepage(props) {
             </h6>
           </div>
           <div className="main-cont">
-          <div className="container main-div">
-            <div
-              className="container div1"
-              style={{ backgroundImage: `url(${div1})`, marginRight: isMobile ? "1rem" : "15dvw" }}
-            ></div>
-            <div className="container div2">
-              <p className="home-paragrapgh">
-                <i>
-                  iNotebook is a modern, secure, and user-friendly note-taking
-                  app designed to simplify your digital life. Whether you're
-                  jotting down quick ideas, organizing daily tasks, or storing
-                  important information, iNotebook gives you a clean and
-                  efficient space to do it all.
-                </i>
-              </p>
+            <div className="container main-div">
+              <div
+                className="container div1"
+                style={{ backgroundImage: `url(${div1})`, marginRight: isMobile ? "1rem" : "15dvw" }}
+              ></div>
+              <div className="container div2">
+                <p className="home-paragrapgh">
+                  <i>
+                    iNotebook is a modern, secure, and user-friendly note-taking
+                    app designed to simplify your digital life. Whether you're
+                    jotting down quick ideas, organizing daily tasks, or storing
+                    important information, iNotebook gives you a clean and
+                    efficient space to do it all.
+                  </i>
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="container main-div">
-            <div className="container div2 div-left">
-              <p className="home-paragrapgh">
-                <i>
-                  iNotebook is designed to be simple and intuitive, so you can
-                  start writing notes instantly. With a clean interface and
-                  smooth experience, staying organized has never been easier.
-                </i>
-              </p>
+            <div className="container main-div">
+              <div className="container div2 div-left">
+                <p className="home-paragrapgh">
+                  <i>
+                    iNotebook is designed to be simple and intuitive, so you can
+                    start writing notes instantly. With a clean interface and
+                    smooth experience, staying organized has never been easier.
+                  </i>
+                </p>
+              </div>
+              <div
+                className="container div1 div-right"
+                style={{ backgroundImage: `url(${div2})` }}
+              ></div>
             </div>
-            <div
-              className="container div1 div-right"
-              style={{ backgroundImage: `url(${div2})` }}
-            ></div>
-          </div>
-          <div className="container main-div">
-            <div
-              className="container div1"
-              style={{ backgroundImage: `url(${div3})`, marginRight: isMobile ? "1rem" : "15dvw" }}
-            ></div>
-            <div className="container div2">
-              <p className="home-paragrapgh" >
-                <i>
-                  At iNotebook, your privacy is our top priority. We understand
-                  the importance of protecting your personal data and notes.Your
-                  notes stay only with you, and we never share or sell your
-                  data.
-                </i>
-              </p>
+            <div className="container main-div">
+              <div
+                className="container div1"
+                style={{ backgroundImage: `url(${div3})`, marginRight: isMobile ? "1rem" : "15dvw" }}
+              ></div>
+              <div className="container div2">
+                <p className="home-paragrapgh" >
+                  <i>
+                    At iNotebook, your privacy is our top priority. We understand
+                    the importance of protecting your personal data and notes.Your
+                    notes stay only with you, and we never share or sell your
+                    data.
+                  </i>
+                </p>
+              </div>
             </div>
-          </div>
           </div>
 
           {localStorage.getItem("token") ? (
@@ -98,13 +108,12 @@ export default function Homepage(props) {
                 "Welcome back! Access your notes anytime, from any device. Just
                 log in and pick up where you left off.
               </p>
-              <a
-                href={`${localStorage.getItem("token") ? "/notes" : "/login"}`}
-                onClick={handleClick}
+              <button
+                onClick={() => {handleClick("/notes")}}
                 className="btn btn-primary px-4 mt-2"
               >
                 Continue
-              </a>
+              </button>
               <p className="paragraph my-3">
                 Your organized thoughts are waiting.
               </p>
@@ -118,13 +127,12 @@ export default function Homepage(props) {
                 and experience the ease of iNotebook. It's free, fast, and
                 secure!
               </p>
-              <a
-                href={`${localStorage.getItem("token") ? "/" : "/signup"}`}
-                onClick={handleClick}
+              <button
+                onClick={() => {handleClick("/signup")}}
                 className="btn btn-primary px-4 mt-2"
               >
                 Register Now
-              </a>
+              </button>
               <p className="paragraph my-3">
                 Not a user yet? Get started in just one click.
               </p>
@@ -134,5 +142,6 @@ export default function Homepage(props) {
         </div>
       </div>
     </div>
+    </>
   );
 }

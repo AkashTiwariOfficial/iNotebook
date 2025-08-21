@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import Spinner from "./Spinner";
 
 export default function Signup(props) {
 
@@ -14,10 +15,14 @@ export default function Signup(props) {
     password: "",
     cpassword: "",
   });
+  const [showSpinner, setSpinner] = useState(false);
   const navigate = useNavigate();
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
+    setSpinner(true);
+
+    try{
     const response = await fetch(`${host}/api/auth/createuser`, {
       method: "POST",
       headers: {
@@ -29,9 +34,9 @@ export default function Signup(props) {
         password: credentials.password,
       }),
     });
-
+      
+    setProgress(12);
     if (credentials.password === credentials.cpassword) {
-      setProgress(12);
       const json = await response.json();
       if (json.success) {
        toast.success("You have created an account in inoteBook successfully")
@@ -39,18 +44,21 @@ export default function Signup(props) {
         localStorage.setItem("token", json.authenticationToken);
         setProgress(60);
         navigate("/");
-        setProgress(100);
+          setSpinner(false);
       } else {
         setProgress(40);
         setProgress(60);
         toast.error("User with email already exists. Please Signup again!")
-        setProgress(100);
       }
     } else {
       setProgress(40);
       setProgress(60);
       toast.error("Both password did not match. Please try again!");
-      setProgress(100);
+    }
+    }  catch(error){
+      toast.error("Internal Server Error");
+    } finally{
+        setProgress(100);      
     }
   };
 
@@ -59,6 +67,9 @@ export default function Signup(props) {
   };
 
   return (
+    <>
+    {showSpinner ? ( <Spinner /> ) : 
+    (
     <div
       className="container"
       style={{ marginTop: "17dvh", marginBottom: "25dvh" }}
@@ -95,7 +106,7 @@ export default function Signup(props) {
             onChange={changeHandler}
             required
           />
-          <div id="email" className="form-text">
+          <div id="email" className="themed-section form-text">
             We'll never share your email with anyone else.
           </div>
         </div>
@@ -114,6 +125,9 @@ export default function Signup(props) {
             minLength={8}
             required
           />
+          <div id="password" className="themed-section form-text">
+            Length must be greater than 8 including a symbols or numbers
+          </div>
         </div>
         <div className="mb-3">
           <label htmlFor="cpassword" className="form-label">
@@ -134,12 +148,12 @@ export default function Signup(props) {
         <button
           type="submit"
           disabled={
-            credentials.email === 0 ||
-            credentials.email > 8 ||
-            credentials.password === 0 ||
-            credentials.password > 8 ||
-            credentials.cpassword === 0 ||
-            credentials.cpassword > 8
+            credentials.email.length === 0 ||
+            credentials.email.length < 8 ||
+            credentials.password.length === 0 ||
+            credentials.password.length < 8 ||
+            credentials.cpassword.length === 0 ||
+            credentials.cpassword.length < 8
           }
           className="btn btn-primary"
         >
@@ -147,5 +161,7 @@ export default function Signup(props) {
         </button>
       </form>
     </div>
+    )}
+    </>
   );
 }

@@ -20,14 +20,14 @@ export default function Navbar(props) {
     styleTooltip,
     showToolTip,
   } = Context;
-
+  
   const handleLogout = () => {
     setProgress(12);
     setProgress(40);
     localStorage.removeItem("token");
     toast.success("You have Logged out from inoteBook successfully");
     navigate("login");
-    setProgress(100);
+    setProgress(100);    
   };
 
   const handleClick = () => {
@@ -39,6 +39,7 @@ export default function Navbar(props) {
   };
 
   return (
+    <>
     <nav
       className={`navbar navbar-expand-lg fixed-top navbar-${mode} bg-${mode} `}
     >
@@ -173,5 +174,6 @@ export default function Navbar(props) {
         </div>
       </div>
     </nav>
+    </>
   );
 }
