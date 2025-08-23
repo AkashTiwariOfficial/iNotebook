@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import Spinner from "./Spinner";
 
 export default function Login(props) {
 
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-   const [showSpinner, setSpinner] = useState(false);
   let navigate = useNavigate();
 
   const { setProgress } = props;
@@ -15,7 +13,6 @@ export default function Login(props) {
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
-    setSpinner(true);
 
     try{
     const response = await fetch(`${host}/api/auth/login`, {
@@ -45,7 +42,7 @@ export default function Login(props) {
    } catch (error) {
     toast.error("Internal Server Error");
   } finally {
-         setSpinner(false);
+    
          setProgress(100);
   }
 };
@@ -56,9 +53,6 @@ export default function Login(props) {
 
   return (
     <>
-        {showSpinner ? (
-          <Spinner /> )
-          : (
     <div
       className="container"
       style={{ marginTop: "17dvh", marginBottom: "25dvh" }}
@@ -109,7 +103,6 @@ export default function Login(props) {
         </button>
       </form>
     </div>
-          )}
         </>
   );
 }

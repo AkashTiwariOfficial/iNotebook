@@ -4,6 +4,7 @@ import AddNote from "./AddNote";
 import NotesItems from "./NotesItems";
 import { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
+import Spinner from "./Spinner";
 
 export default function Notes(props) {
   const ref = useRef(null);
@@ -19,13 +20,17 @@ export default function Notes(props) {
     eDescription: "",
     etag: "",
   });
+  const [showSpinner, setSpinner] = useState(false);
   let navigate = useNavigate();
 
   useEffect(() => {
+    setSpinner(true);
     if (localStorage.getItem("token")) {
       getNotes();
+      setSpinner(false);
     } else {
       navigate("/login");
+      setSpinner(false);
     }
     // eslint-disable-next-line
   }, []);
@@ -199,6 +204,7 @@ export default function Notes(props) {
           </div>
         </div>
       </div>
+      {showSpinner ? ( <Spinner /> ) : (
       <div className="row my-4">
         {location.pathname === "/usernotes" ? (
           <h1 className="text-center my-4 py-4">All Your Notes in One Place</h1>
@@ -230,6 +236,7 @@ export default function Notes(props) {
           );
         })}
       </div>
+      )}
     </div>
   );
 }

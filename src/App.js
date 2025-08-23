@@ -78,7 +78,7 @@ function App() {
                 style: {
                   background: '#1f2937',
                   color: '#fff',
-                  duration: '2500',
+                  duration: '3000',
                 },
                 dark: {
                   style: {

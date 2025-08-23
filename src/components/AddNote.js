@@ -15,7 +15,7 @@ export default function AddNote(props) {
     setSpinner(true);
     setTimeout(() => {
        setSpinner(false);
-    }, 2000);
+    }, 1000);
   }, [])
 
   const clickHandler = (event) => {

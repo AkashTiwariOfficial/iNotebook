@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import Spinner from "./Spinner";
-
 export default function Signup(props) {
 
   const { setProgress } = props;
@@ -15,12 +13,11 @@ export default function Signup(props) {
     password: "",
     cpassword: "",
   });
-  const [showSpinner, setSpinner] = useState(false);
+
   const navigate = useNavigate();
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
-    setSpinner(true);
 
     try{
     const response = await fetch(`${host}/api/auth/createuser`, {
@@ -44,7 +41,6 @@ export default function Signup(props) {
         localStorage.setItem("token", json.authenticationToken);
         setProgress(60);
         navigate("/");
-          setSpinner(false);
       } else {
         setProgress(40);
         setProgress(60);
@@ -68,8 +64,6 @@ export default function Signup(props) {
 
   return (
     <>
-    {showSpinner ? ( <Spinner /> ) : 
-    (
     <div
       className="container"
       style={{ marginTop: "17dvh", marginBottom: "25dvh" }}
@@ -161,7 +155,6 @@ export default function Signup(props) {
         </button>
       </form>
     </div>
-    )}
     </>
   );
 }

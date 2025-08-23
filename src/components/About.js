@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "./logo.png";
 import noteContext from "../Context/notes/noteContext";
+import Spinner from "./Spinner";
 
 export default function About(props) {
   const Context = useContext(noteContext);
   const { mode } = Context;
 
   const { setProgress } = props;
+
+   const [showSpinner, setSpinner] = useState(false);
 
   const handleloadingbar = () => {
     setProgress(12);
@@ -15,8 +18,17 @@ export default function About(props) {
     setProgress(100);
   };
 
+    useEffect(() => {
+      setSpinner(true);
+      setTimeout(() => {
+         setSpinner(false);
+      }, 1000);
+    }, [])
+
   return (
     <div>
+      { showSpinner ? ( <Spinner /> ) :
+      (
       <div
         className="container py-5"
         style={{ marginTop: "17dvh", marginBottom: "10dvh" }}
@@ -124,6 +136,7 @@ export default function About(props) {
           </a>
         </div>
       </div>
+)}
     </div>
   );
 }
