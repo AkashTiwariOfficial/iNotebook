@@ -91,4 +91,23 @@ router.delete('/deletenotes/:id', fetchuser, async (req, res) => {
     }
 });
 
+// Route:-4 Fetching note using: GET "/api/notes/yournote/:id". Login required:-
+router.get('/yournote/:id', fetchuser, async (req, res) =>  {
+    try {
+     let note = await Notes.findById(req.params.id);
+     if(!note) {
+        return res.status(404).send({ error: "Not found"});
+     }
+     // checking wheather the Notes is being edited by owner :-
+     if(note.user.toString() !== req.user.id) {
+        return res.status(401).send({error: "Note allowed. Access Denied"})
+     }
+     //fetching Note:-
+     res.json(note);
+    } catch {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 module.exports = router

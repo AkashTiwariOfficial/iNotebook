@@ -20,7 +20,7 @@ export default function Usernotes(props) {
   return (
     <div style={{ marginTop: "17dvh", marginBottom: "25dvh" }}>
       {showSpinner ? ( <Spinner /> ) : (
-      <div className={`bg-${mode} p-4 rounded shadow-sm w-100`}>
+      <div className={`bg-${mode} p-4 rounded shadow-sm`}>
         <Notes setProgress={setProgress} />
       </div>
      )}

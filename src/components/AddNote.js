@@ -37,10 +37,10 @@ export default function AddNote(props) {
     {showSpinner ? ( <Spinner /> ) :
     (
     <div>
-      <div className="container" style={{ marginTop: "17dvh" }}>
-        <h1>Add Notes</h1>
+      <div className="container mb-3 col-12 col-lg-8 mx-auto" style={{ marginTop: "17dvh" }}>
+        <h1 className="text-center">Add Notes</h1>
         <form className="my-3">
-          <div className="mb-3">
+          <div className="mb-3 col-12 col-lg-12 mx-auto">
             <label htmlFor="Title" className="form-label">
               Title
             </label>
@@ -59,7 +59,7 @@ export default function AddNote(props) {
               Enter the Title of Notes
             </div>
           </div>
-          <div className="mb-3">
+          <div className="mb-3 col-12 col-lg-12 mx-auto">
             <label htmlFor="Description" className="form-label">
               Description
             </label>
@@ -78,7 +78,7 @@ export default function AddNote(props) {
               Enter the Description for Notes
             </div>
           </div>
-          <div className="mb-3">
+          <div className="mb-3 col-12 col-lg-12 mx-auto">
             <label htmlFor="tag" className="form-label">
               Tag
             </label>
@@ -96,7 +96,8 @@ export default function AddNote(props) {
               Enter the Tag of Notes
             </div>
           </div>
-          <button
+         <div className="cred-cont">
+           <button
             type="submit"
             className="btn btn-primary"
             disabled={
@@ -109,6 +110,7 @@ export default function AddNote(props) {
           >
             Add Notes
           </button>
+         </div>
         </form>
       </div>
     </div>

@@ -15,6 +15,7 @@ import Usernotes from "./components/Usernotes";
 import LoadingBar from "react-top-loading-bar";
 import React, { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
+import Readmore from "./components/Readmore";
 
 function App() {
 
@@ -67,6 +68,10 @@ function App() {
               <Route
                 path="/usernotes"
                 element={<Usernotes setProgress={setProgress} />}
+              />
+               <Route
+                path="/note/:id"
+                element={<Readmore setProgress={setProgress} />}
               />
             </Routes>
           </div>

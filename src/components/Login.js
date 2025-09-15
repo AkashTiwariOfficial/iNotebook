@@ -57,9 +57,9 @@ export default function Login(props) {
       className="container"
       style={{ marginTop: "17dvh", marginBottom: "25dvh" }}
     >
-      <h2 className="my-4">Login to use iNotebook</h2>
+      <h2 className="my-4 text-center">Login to use iNotebook</h2>
       <form onSubmit={handlerSubmit}>
-        <div className="mb-3">
+        <div className="mb-3 col-12 col-lg-5 mx-auto">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email address
           </label>
@@ -77,7 +77,7 @@ export default function Login(props) {
             We'll never share your email with anyone else.
           </div>
         </div>
-        <div className="mb-3">
+        <div className="mb-3 col-12 col-lg-5 mx-auto">
           <label htmlFor="password" className="form-label">
             Password
           </label>
@@ -91,9 +91,10 @@ export default function Login(props) {
             autoComplete="current-password"
           />
         </div>
+        <div className="cred-cont">
         <button
           type="submit"
-          className="btn btn-primary"
+          className="btn btn-primary btn-cred"
           disabled={
             credentials.email.length === 0 ||
             credentials.password.length === 0 
@@ -101,6 +102,7 @@ export default function Login(props) {
         >
           Login
         </button>
+        </div>
       </form>
     </div>
         </>

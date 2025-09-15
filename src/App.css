@@ -244,3 +244,15 @@ body.dark .card-body {
   }
 }
 
+.cred-cont {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-cred {
+  margin-right: 35%;
+ } @media (max-width: 768px) {
+.btn-cred {
+  margin-right: 75%;  
+  }
+ }

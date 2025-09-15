@@ -68,9 +68,9 @@ export default function Signup(props) {
       className="container"
       style={{ marginTop: "17dvh", marginBottom: "25dvh" }}
     >
-      <h2 className="my-4">Signup to create a account on iNotebook</h2>
+      <h2 className="my-4 text-center">Signup on iNotebook</h2>
       <form onSubmit={handlerSubmit}>
-        <div className="mb-3">
+        <div className="mb-3 col-12 col-lg-5 mx-auto">
           <label htmlFor="Name" className="form-label">
             Name
           </label>
@@ -85,7 +85,7 @@ export default function Signup(props) {
             required
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 col-12 col-lg-5 mx-auto">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email address
           </label>
@@ -104,7 +104,7 @@ export default function Signup(props) {
             We'll never share your email with anyone else.
           </div>
         </div>
-        <div className="mb-3">
+        <div className="mb-3 col-12 col-lg-5 mx-auto">
           <label htmlFor="password" className="form-label">
             Password
           </label>
@@ -123,7 +123,7 @@ export default function Signup(props) {
             Length must be greater than 8 including a symbols or numbers
           </div>
         </div>
-        <div className="mb-3">
+        <div className="mb-3 col-12 col-lg-5 mx-auto">
           <label htmlFor="cpassword" className="form-label">
             Confirm Password
           </label>
@@ -139,6 +139,7 @@ export default function Signup(props) {
             required
           />
         </div>
+        <div className="cred-cont">
         <button
           type="submit"
           disabled={
@@ -149,10 +150,11 @@ export default function Signup(props) {
             credentials.cpassword.length === 0 ||
             credentials.cpassword.length < 8
           }
-          className="btn btn-primary"
+          className="btn btn-cred btn-primary"
         >
           Signup
         </button>
+        </div>
       </form>
     </div>
     </>

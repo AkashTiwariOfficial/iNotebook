@@ -56,11 +56,11 @@ export default function Editnotes(props) {
   return (
     <>
       {showSpinner ? (<Spinner />) : (
-        <div style={{ marginTop: "17dvh", marginBottom: "25dvh" }}>
-          <h1 className="my-4 py-3">Edit Notes</h1>
+        <div className="mb-3 col-12 col-lg-12 mx-auto" style={{ marginTop: "17dvh", marginBottom: "25dvh" }}>
+          <h1 className=" mt-5 pt-4 text-center">Edit Notes</h1>
 
           <form className="my-3">
-            <div className="mb-3">
+            <div className="mb-3 col-12 col-lg-8 mx-auto">
               <label htmlFor="eTitle" className="form-label">
                 Title
               </label>
@@ -82,7 +82,7 @@ export default function Editnotes(props) {
                 Enter the Title of Notes
               </div>
             </div>
-            <div className="mb-3">
+            <div className="mb-3 col-12 col-lg-8 mx-auto">
               <label htmlFor="Description" className="form-label">
                 Description
               </label>
@@ -103,7 +103,7 @@ export default function Editnotes(props) {
                 Enter the Description for Notes
               </div>
             </div>
-            <div className="mb-3">
+            <div className="mb-3 col-12 col-lg-8 mx-auto">
               <label htmlFor="tag" className="form-label">
                 Tag
               </label>
@@ -125,7 +125,7 @@ export default function Editnotes(props) {
               </div>
             </div>
           </form>
-          <div className="Button" style={{ marginBottom: "30vh" }}>
+          <div className="Button cred-cont" style={{ marginBottom: "30vh" }}>
             <button
               type="button"
               disabled={

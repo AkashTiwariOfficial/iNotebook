@@ -101,100 +101,121 @@ const NoteState = (props) => {
     setNotes(newNotes);
   };
 
-  const toggleMode = () => {
-    if (mode === "light") {
-      setMode("dark");
-      toast("Dark Mode has been enabled");
-      document.body.style.backgroundColor = "#151B25";
-      document.body.style.color = "#b4b4b4";
-    } else {
-      setMode("light");
-      toast("Light Mode has been enabled");
-      document.body.style.backgroundColor = " rgb(255, 255, 255)";
-      document.body.style.color = "#0a0a0a";
+  const getNoteID = async (id) => {
+    if (!id) {
+      console.error("❌ ID is undefined in updateNote");
+      return;
     }
-  };
+    try {
+      const response = await fetch(`${host}/api/notes/yournote/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        }
+      });
+        const note = await response.json();
+        return note;
+      } catch (error) {
+         console.error("Error fetching note:", error);
+      }
+  }
 
-  useEffect(() => {
-    document.body.className = mode; // 'light' or 'dark'
-  }, [mode]);
+const toggleMode = () => {
+  if (mode === "light") {
+    setMode("dark");
+    toast("Dark Mode has been enabled");
+    document.body.style.backgroundColor = "#151B25";
+    document.body.style.color = "#b4b4b4";
+  } else {
+    setMode("light");
+    toast("Light Mode has been enabled");
+    document.body.style.backgroundColor = " rgb(255, 255, 255)";
+    document.body.style.color = "#0a0a0a";
+  }
+};
 
-  const changeBorder = () => {
-    if (mode === "light") {
-      return {
-        border: "1px solid #d3dce6",
-        color: "#4c4d8899",
-      };
-    } else {
-      return {
-        border: "1px solid #ffffff33",
-        color: "#ffffff",
-      };
-    }
-  };
+useEffect(() => {
+  document.body.className = mode; // 'light' or 'dark'
+}, [mode]);
 
-  const show = () => {
-    setShowToolTip(true);
-  };
-  const hide = () => {
-    setShowToolTip(false);
-  };
-
-  const styleTooltip = () => {
+const changeBorder = () => {
+  if (mode === "light") {
     return {
-      backgroundColor: "#535353ff",
-      color: "#ffffff",
-      border: "2px solid #ffffff",
-      position: "absolute",
-      top: "110%",
-      fontSize: "13px",
-      borderRadius: "6%",
-      left: "50%",
-      zIndex: 1000,
-      padding: "5px 5px 5px 5px",
-      whiteSpace: "nowrap",
-      width: "130px",
-      height: "40px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
+      border: "1px solid #d3dce6",
+      color: "#4c4d8899",
     };
-  };
+  } else {
+    return {
+      border: "1px solid #ffffff33",
+      color: "#ffffff",
+    };
+  }
+};
 
-  const handleEditnote = (currentNote) => {
-    setNote({
-      id: currentNote._id,
-      eTitle: currentNote.Title,
-      eDescription: currentNote.Description,
-      etag: currentNote.tag,
-    });
-  };
+const show = () => {
+  setShowToolTip(true);
+};
+const hide = () => {
+  setShowToolTip(false);
+};
 
-  return (
-    <NoteContext.Provider
-      value={{
-        note,
-        notes,
-        alert,
-        mode,
-        showToolTip,
-        setNote,
-        setAlert,
-        addNote,
-        deleteNote,
-        updateNote,
-        getNotes,
-        handleEditnote,
-        toggleMode,
-        changeBorder,
-        show,
-        hide,
-        styleTooltip,
-      }}
-    >
-      {props.children}
-    </NoteContext.Provider>
-  );
+const styleTooltip = () => {
+  return {
+    backgroundColor: "#535353ff",
+    color: "#ffffff",
+    border: "2px solid #ffffff",
+    position: "absolute",
+    top: "110%",
+    fontSize: "13px",
+    borderRadius: "6%",
+    left: "50%",
+    zIndex: 1000,
+    padding: "5px 5px 5px 5px",
+    whiteSpace: "nowrap",
+    width: "130px",
+    height: "40px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
+};
+
+const handleEditnote = (currentNote) => {
+  setNote({
+    id: currentNote._id,
+    eTitle: currentNote.Title,
+    eDescription: currentNote.Description,
+    etag: currentNote.tag,
+  });
+};
+
+return (
+  <NoteContext.Provider
+    value={{
+      note,
+      notes,
+      alert,
+      mode,
+      showToolTip,
+      setNote,
+      setAlert,
+      addNote,
+      deleteNote,
+      updateNote,
+      getNotes,
+      handleEditnote,
+      toggleMode,
+      changeBorder,
+      show,
+      hide,
+      styleTooltip,
+     getNoteID,
+    }}
+  >
+    {props.children}
+  </NoteContext.Provider>
+);
 };
 
 export default NoteState;
