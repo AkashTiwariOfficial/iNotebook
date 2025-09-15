@@ -37,7 +37,7 @@ export default function AddNote(props) {
     {showSpinner ? ( <Spinner /> ) :
     (
     <div>
-      <div className="container mb-3 col-12 col-lg-8 mx-auto" style={{ marginTop: "17dvh" }}>
+      <div className="container mb-3 col-12 col-lg-8 mx-auto" style={{ marginTop: "15dvh" }}>
         <h1 className="text-center">Add Notes</h1>
         <form className="my-3">
           <div className="mb-3 col-12 col-lg-12 mx-auto">

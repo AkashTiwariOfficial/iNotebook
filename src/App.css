@@ -166,21 +166,17 @@ body.dark .card-body {
   line-height: 1.5 ;
 }
 
-@media (max-width: 768px) {
-  
-  .div-left {
-  margin-right: 2rem;
-  padding-top: 15px;
-}
+ .empty-div {
+   height: 8rem;
+   width: 8rem;
+ }
 
-.div-right {
-  margin-left: 2rem;
-}
+@media (max-width: 768px) {
 
 .div2 {
-  width: 7rem;
-  font-size: 9px;
-  padding-top: 10px;
+  width: 12rem;
+  font-size: 0.1rem;
+  padding-top: 2.5rem;
   overflow: visible;
 }
 
@@ -188,9 +184,10 @@ body.dark .card-body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1dvh;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  height: 7.5rem;
+  padding: 0.5dvh;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .header {
@@ -207,9 +204,9 @@ body.dark .card-body {
 .div1 {
   margin: 0px;
   padding: 0px;
-  height: 5rem;
-  width: 8rem;
-  background-size: cover;
+  height: 6rem;
+  width: 10rem;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 2%;
@@ -220,10 +217,15 @@ body.dark .card-body {
 }
 
 .home-paragrapgh {
-  padding-top: 1.2rem;
+ padding-top: 1.89rem;
  height: 1.5rem;
- font-size: 7px;
+ font-size: 0.36rem;
 }
+
+ .empty-div {
+   height: 6rem;
+   width: 1rem;
+ }
 
 }
 
@@ -256,3 +258,4 @@ body.dark .card-body {
   margin-right: 75%;  
   }
  }
+

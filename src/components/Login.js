@@ -55,7 +55,7 @@ export default function Login(props) {
     <>
     <div
       className="container"
-      style={{ marginTop: "17dvh", marginBottom: "25dvh" }}
+      style={{ marginTop: "15dvh", marginBottom: "25dvh" }}
     >
       <h2 className="my-4 text-center">Login to use iNotebook</h2>
       <form onSubmit={handlerSubmit}>

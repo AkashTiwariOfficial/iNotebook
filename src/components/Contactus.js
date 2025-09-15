@@ -64,7 +64,7 @@ export default function Contactus(props) {
     <>
       {showSpinner ? (<Spinner />) :
         (
-          <div style={{ marginTop: "17dvh", marginBottom: "10dvh" }}>
+          <div style={{ marginTop: "10dvh", marginBottom: "10dvh" }}>
             <div className="container py-5">
               <div className="text-center mb-5">
                 <h2 className="fw-bold text-primary">About iNotebook</h2>

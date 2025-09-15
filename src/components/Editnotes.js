@@ -56,7 +56,7 @@ export default function Editnotes(props) {
   return (
     <>
       {showSpinner ? (<Spinner />) : (
-        <div className="mb-3 col-12 col-lg-12 mx-auto" style={{ marginTop: "17dvh", marginBottom: "25dvh" }}>
+        <div className="mb-3 col-12 col-lg-12 mx-auto" style={{ marginTop: "10dvh", marginBottom: "12dvh" }}>
           <h1 className=" mt-5 pt-4 text-center">Edit Notes</h1>
 
           <form className="my-3">

@@ -16,8 +16,6 @@ export default function Homepage(props) {
   const { setProgress } = props;
   const [showSpinner, setSpinner] = useState(false);
 
-  const isMobile = window.innerWidth <= 768;
-
   const handleClick = (path) => {
     setSpinner(true);
     setProgress(12);
@@ -36,7 +34,7 @@ export default function Homepage(props) {
     <div>
       <div
         className={`bg-${mode} min-h-screen w-screen py-10 px-4`}
-        style={{ marginTop: "17dvh", marginBottom: "25dvh" }}
+        style={{ marginTop: "10dvh", marginBottom: "12dvh" }}
       >
         <div className="text-center mb-10">
           <div className="container " id="title">
@@ -44,7 +42,7 @@ export default function Homepage(props) {
           </div>
           <div className="d-flex justify-content-center">
             <h6
-              className="fw-semibold text-start my-3 heading"
+              className="fw-semibold text-start my-1 heading"
             >
               Jot down ideas, track your tasks, and manage everything important
               — all in one place, anytime, anywhere.
@@ -54,8 +52,9 @@ export default function Homepage(props) {
             <div className="container main-div">
               <div
                 className="container div1"
-                style={{ backgroundImage: `url(${div1})`, marginRight: isMobile ? "1rem" : "15dvw" }}
+                style={{ backgroundImage: `url(${div1})` }}
               ></div>
+              <div className="empty-div"></div>
               <div className="container div2">
                 <p className="home-paragrapgh">
                   <i>
@@ -69,7 +68,7 @@ export default function Homepage(props) {
               </div>
             </div>
             <div className="container main-div">
-              <div className="container div2 div-left">
+              <div className="container div2">
                 <p className="home-paragrapgh">
                   <i>
                     iNotebook is designed to be simple and intuitive, so you can
@@ -78,6 +77,7 @@ export default function Homepage(props) {
                   </i>
                 </p>
               </div>
+               <div className="empty-div"></div>
               <div
                 className="container div1 div-right"
                 style={{ backgroundImage: `url(${div2})` }}
@@ -86,8 +86,9 @@ export default function Homepage(props) {
             <div className="container main-div">
               <div
                 className="container div1"
-                style={{ backgroundImage: `url(${div3})`, marginRight: isMobile ? "1rem" : "15dvw" }}
+                style={{ backgroundImage: `url(${div3})` }}
               ></div>
+               <div className="empty-div"></div>
               <div className="container div2">
                 <p className="home-paragrapgh" >
                   <i>
