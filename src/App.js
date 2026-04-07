@@ -87,7 +87,7 @@ function App() {
                 },
                 dark: {
                   style: {
-                    background: "#1f2937", 
+                    background: "#121213", 
                     color: "#fff",
                   },
                 },
